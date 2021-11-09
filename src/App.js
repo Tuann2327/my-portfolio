@@ -85,17 +85,22 @@ const Article = (props)=>{
 
   useEffect(() => {
     setProjects(props.projects)
+    console.log(window.innerHeight)
   }, [props.projects])
 
   const projectsRender = projects.map((project,index)=>{
     return(
-      <a href={project.link} target="_blank" className='project' key={index}>
-        <img src={`${project.img}`}/>
-        <div className='project-info'>
-          <h2 className='project-title'>{`#${index+1} ${project.name}`}</h2>
-          <p className='project-des'>{project.des}</p>
-        </div>
-      </a>
+      <SplideSlide key={index}>
+        <a href={project.link} target="_blank" className='project' >
+          <div className='project-img'>
+            <img src={`${project.img}`}/>
+          </div>
+          <div className='project-info'>
+            <h2 className='project-title'>{`#${index+1} ${project.name}`}</h2>
+            <p className='project-des'>{project.des}</p>
+          </div>
+        </a>
+      </SplideSlide>
     )
   })
 
@@ -103,7 +108,30 @@ const Article = (props)=>{
     <article className='mainContent'>
       
       <div className={`projectHolder ${(props.menu===1)?'':'hide'}`}>
+      <Splide
+          options={ { 
+            type : "loop",
+            gap    : '1rem',
+            autoplay: true,
+            interval: '5000ms',
+            perPage: 2,
+            perMove: 1,
+            speed: 1000,
+            easing: 'ease',
+            arrows: true,
+            breakpoints: {
+              9999:{
+                destroy: window.innerHeight<800&&window.innerWidth<800?false:true,
+              },
+              500: {
+                perPage: 1,
+              },
+            }
+          } }
+        >
+
         {projectsRender}
+        </Splide>
       </div>
       
       <form className={`sendMeEmail ${(props.menu===2)?'':'hide'}`}>
