@@ -154,8 +154,9 @@ const Introduce = (props)=>{
           <div key={Math.random()} className='introduce'>
             <p className='greed highlight'>Hello, I'm Tuan Tran</p>
             <div className='des'>
-              <p>I'm a <span className='highlight'>self-taught developer</span>. I make responsive website using <span className='highlight'>MERN</span> Stack </p>
+              <p>I'm a <span className='highlight'>self-taught developer</span>. I make responsive websites using <span className='highlight'>MERN</span> Stack </p>
               <p>and build beautiful Front-End with Html/CSS and Javascript.</p>
+              <p>Feel free to contact me anytime for websites commission.</p>
             </div>
           </div>
         )
